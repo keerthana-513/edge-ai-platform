@@ -1,0 +1,5 @@
+{
+    "db_name": "tasks.db",
+    "poll_interval": 5,
+    "log_file": "system.log"
+}
