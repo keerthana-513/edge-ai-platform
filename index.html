@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskSphere AI - Premium AI-Powered P2P Micro-Tasking Platform</title>
+    <meta name="description" content="Connect, complete microtasks, earn rewards, and leverage AI recommendation models for matching. Premium futuristic design with deep purple glassmorphism.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- ApexCharts for modern gradient charts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Ambient Glows -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- Notification Toast System -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- LANDING LAYOUT -->
+    <div id="landing-layout" class="landing-layout">
+        <!-- Landing Header -->
+        <header class="landing-header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i data-lucide="layers" class="logo-svg"></i>
+                </div>
+                <span class="logo-text">TaskSphere <span class="accent-text">AI</span></span>
+            </div>
+            <div class="landing-nav-actions">
+                <button class="btn btn-ghost" onclick="app.navigateTo('login')">Login</button>
+                <button class="btn btn-primary" onclick="app.navigateTo('register')">Get Started</button>
+            </div>
+        </header>
+
+        <!-- Landing Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content fade-in">
+                <div class="badge-ai"><i data-lucide="sparkles" class="badge-icon"></i> Powered by Advanced AI Matching</div>
+                <h1>Complete Microtasks. <br>Earn Rewards. <br><span class="gradient-text">Powered by AI.</span></h1>
+                <p class="hero-subtitle">Connect with people, finish tasks, and let AI find the perfect opportunities for your unique skillset. Experience the future of work.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-lg" onclick="app.navigateTo('register')">
+                        Get Started <i data-lucide="arrow-right" class="btn-icon-right"></i>
+                    </button>
+                    <button class="btn btn-secondary btn-lg" onclick="app.navigateTo('login')">
+                        Access Platform
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-val">15K+</span>
+                        <span class="hero-stat-lbl">Active Users</span>
+                    </div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-val">$240K+</span>
+                        <span class="hero-stat-lbl">Payouts Made</span>
+                    </div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-val">99.8%</span>
+                        <span class="hero-stat-lbl">AI Match Rate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-illustration slide-up">
+                <div class="glass-card illustration-card float-anim">
+                    <div class="ill-header">
+                        <div class="ill-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="ill-title">AI Recommendation Engine</div>
+                    </div>
+                    <div class="ill-body">
+                        <div class="ill-recommendation">
+                            <div class="ill-match-header">
+                                <span class="ill-badge-rec"><i data-lucide="cpu" class="badge-icon-sm"></i> Best Match</span>
+                                <span class="ill-percentage">98% Match</span>
+                            </div>
+                            <div class="ill-task-title">Model Reinforcement Feedback (RLHF)</div>
+                            <div class="ill-task-meta">
+                                <span><i data-lucide="dollar-sign" class="meta-icon"></i> $45.00</span>
+                                <span><i data-lucide="clock" class="meta-icon"></i> 40m est.</span>
+                            </div>
+                            <div class="ill-skills">
+                                <span class="ill-skill">NLP</span>
+                                <span class="ill-skill">AI Tuning</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" style="width: 98%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="ill-rep-card">
+                            <div class="rep-info">
+                                <div class="rep-avatar">🤖</div>
+                                <div>
+                                    <div class="rep-name">Your AI Reputation</div>
+                                    <div class="rep-score">9.8 / 10.0</div>
+                                </div>
+                            </div>
+                            <span class="rep-trend"><i data-lucide="trending-up"></i> +1.2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card illustration-card-bg"></div>
+            </div>
+        </section>
+        
+        <!-- Simple Landing Footer -->
+        <footer class="landing-footer">
+            <p>&copy; 2026 TaskSphere AI. Crafted for the future of decentralized microtasking.</p>
+        </footer>
+    </div>
+
+    <!-- AUTH LAYOUT -->
+    <div id="auth-layout" class="auth-layout hidden">
+        <!-- Login Card -->
+        <div id="login-card" class="glass-card auth-card hidden">
+            <div class="auth-header">
+                <div class="logo-container logo-center">
+                    <div class="logo-icon">
+                        <i data-lucide="layers" class="logo-svg"></i>
+                    </div>
+                    <span class="logo-text">TaskSphere <span class="accent-text">AI</span></span>
+                </div>
+                <h2>Welcome Back</h2>
+                <p class="auth-subtitle">Log in to continue your decentralized earning journey</p>
+            </div>
+            
+            <form id="login-form" class="auth-form" onsubmit="app.handleLogin(event)">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="mail" class="input-icon"></i>
+                        <input type="email" id="login-email" required placeholder="name@domain.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <div class="input-wrapper">
+                        <i data-lucide="lock" class="input-icon"></i>
+                        <input type="password" id="login-password" required placeholder="••••••••">
+                    </div>
+                </div>
+
+                <div class="auth-actions">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="login-remember">
+                        <span class="checkmark"></span>
+                        Remember Me
+                    </label>
+                    <a href="#" class="forgot-link" onclick="app.showToast('Password reset link sent!', 'info')">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    Login to Dashboard <i data-lucide="log-in" class="btn-icon-right"></i>
+                </button>
+            </form>
+
+            <div class="auth-divider">
+                <span>Or continue with</span>
+            </div>
+
+            <div class="social-logins">
+                <button class="btn btn-outline" onclick="app.handleSocialLogin('Google')">
+                    <span class="social-icon">G</span> Google
+                </button>
+                <button class="btn btn-outline" onclick="app.handleSocialLogin('GitHub')">
+                    <span class="social-icon">🐱</span> GitHub
+                </button>
+            </div>
+
+            <div class="auth-footer">
+                Don't have an account? <a href="#" onclick="app.navigateTo('register')">Create an Account</a>
+            </div>
+        </div>
+
+        <!-- Register Card -->
+        <div id="register-card" class="glass-card auth-card hidden">
+            <div class="auth-header">
+                <div class="logo-container logo-center">
+                    <div class="logo-icon">
+                        <i data-lucide="layers" class="logo-svg"></i>
+                    </div>
+                    <span class="logo-text">TaskSphere <span class="accent-text">AI</span></span>
+                </div>
+                <h2>Create Your Account</h2>
+                <p class="auth-subtitle">Join the P2P network powered by AI matching</p>
+            </div>
+            
+            <form id="register-form" class="auth-form" onsubmit="app.handleRegister(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="reg-name">Full Name</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="user" class="input-icon"></i>
+                            <input type="text" id="reg-name" required placeholder="John Doe">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-email">Email Address</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="mail" class="input-icon"></i>
+                            <input type="email" id="reg-email" required placeholder="john@example.com">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="lock" class="input-icon"></i>
+                            <input type="password" id="reg-password" required placeholder="••••••••">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reg-confirm">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <i data-lucide="lock" class="input-icon"></i>
+                            <input type="password" id="reg-confirm" required placeholder="••••••••">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="reg-role">Role</label>
+                        <div class="input-wrapper select-wrapper">
+                            <i data-lucide="briefcase" class="input-icon"></i>
+                            <select id="reg-role" required>
+                                <option value="worker">Worker (Complete tasks & earn)</option>
+                                <option value="provider">Provider (Post tasks & reward)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-experience">Experience Level</label>
+                        <div class="input-wrapper select-wrapper">
+                            <i data-lucide="bar-chart-2" class="input-icon"></i>
+                            <select id="reg-experience" required>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate" selected>Intermediate</option>
+                                <option value="expert">Expert</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Skills</label>
+                    <div class="skills-checkbox-grid">
+                        <label class="skill-pill-checkbox">
+                            <input type="checkbox" name="skills" value="Data Labeling" checked>
+                            <span>Data Labeling</span>
+                        </label>
+                        <label class="skill-pill-checkbox">
+                            <input type="checkbox" name="skills" value="Translation" checked>
+                            <span>Translation</span>
+                        </label>
+                        <label class="skill-pill-checkbox">
+                            <input type="checkbox" name="skills" value="Design" checked>
+                            <span>Design</span>
+                        </label>
+                        <label class="skill-pill-checkbox">
+                            <input type="checkbox" name="skills" value="Transcription">
+                            <span>Transcription</span>
+                        </label>
+                        <label class="skill-pill-checkbox">
+                            <input type="checkbox" name="skills" value="AI Tuning">
+                            <span>AI Tuning</span>
+                        </label>
+                        <label class="skill-pill-checkbox">
+                            <input type="checkbox" name="skills" value="Coding">
+                            <span>Coding</span>
+                        </label>
+                        <label class="skill-pill-checkbox">
+                            <input type="checkbox" name="skills" value="Writing">
+                            <span>Writing</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">
+                    Create Account <i data-lucide="user-plus" class="btn-icon-right"></i>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                Already have an account? <a href="#" onclick="app.navigateTo('login')">Log In</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD LAYOUT -->
+    <div id="main-layout" class="main-layout hidden">
+        <!-- Top Navigation Bar -->
+        <header class="top-nav">
+            <div class="nav-left">
+                <!-- Hamburger menu for mobile -->
+                <button class="hamburger-menu" id="hamburger-menu" onclick="app.toggleSidebar()">
+                    <i data-lucide="menu"></i>
+                </button>
+                <div class="logo-container" onclick="app.navigateTo('dashboard')">
+                    <div class="logo-icon">
+                        <i data-lucide="layers" class="logo-svg"></i>
+                    </div>
+                    <span class="logo-text">TaskSphere <span class="accent-text">AI</span></span>
+                </div>
+            </div>
+            
+            <div class="nav-center">
+                <div class="search-bar-wrapper">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="global-search" placeholder="Search Tasks..." onkeyup="app.handleGlobalSearch(event)">
+                </div>
+            </div>
+            
+            <div class="nav-right">
+                <!-- Notification Toggle -->
+                <div class="nav-icon-badge-container">
+                    <button class="nav-icon-btn" onclick="app.toggleNotificationPanel(event)" title="Notifications">
+                        <i data-lucide="bell"></i>
+                        <span class="badge-count hidden" id="notification-badge">0</span>
+                    </button>
+                    <!-- Notifications Dropdown -->
+                    <div id="notification-dropdown" class="dropdown-panel hidden">
+                        <div class="dropdown-header">
+                            <h3>Notifications</h3>
+                            <button class="text-btn" onclick="app.markAllNotificationsRead()">Mark all read</button>
+                        </div>
+                        <div class="dropdown-list" id="notification-dropdown-list">
+                            <!-- Populated by JS -->
+                        </div>
+                        <div class="dropdown-footer">
+                            <button class="btn btn-ghost btn-sm btn-block" onclick="app.navigateTo('notifications')">View All Notifications</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Messages Toggle -->
+                <div class="nav-icon-badge-container">
+                    <button class="nav-icon-btn" onclick="app.toggleMessagePanel(event)" title="Messages">
+                        <i data-lucide="message-square"></i>
+                        <span class="badge-count hidden" id="message-badge">2</span>
+                    </button>
+                    <!-- Messages Dropdown -->
+                    <div id="message-dropdown" class="dropdown-panel hidden">
+                        <div class="dropdown-header">
+                            <h3>Direct Messages</h3>
+                            <button class="text-btn" onclick="app.showToast('Feature coming soon!', 'info')">New Message</button>
+                        </div>
+                        <div class="dropdown-list" id="message-dropdown-list">
+                            <!-- Hardcoded sample chats -->
+                            <div class="dropdown-item message-item unread">
+                                <div class="item-avatar">👨‍💻</div>
+                                <div class="item-content">
+                                    <div class="item-title">Alex (Provider) <span class="item-time">10m ago</span></div>
+                                    <p class="item-desc">Great job on translation tasks. I've sent you another recommendation.</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-item message-item">
+                                <div class="item-avatar">🤖</div>
+                                <div class="item-content">
+                                    <div class="item-title">TaskSphere Butler <span class="item-time">2h ago</span></div>
+                                    <p class="item-desc">Your AI Reputation score increased to 9.8! Keep up the good work.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dark Mode Toggle (Visual Only) -->
+                <button class="nav-icon-btn" onclick="app.toggleDarkMode()" title="Toggle Theme" id="theme-toggle-btn">
+                    <i data-lucide="sun"></i>
+                </button>
+
+                <!-- Profile Dropdown -->
+                <div class="profile-dropdown-container">
+                    <button class="profile-trigger" onclick="app.toggleProfileDropdown(event)">
+                        <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=keert" alt="Profile" id="nav-profile-pic">
+                    </button>
+                    <div id="profile-dropdown" class="dropdown-panel dropdown-right hidden">
+                        <div class="dropdown-profile-header">
+                            <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=keert" alt="Profile" class="dropdown-avatar" id="nav-dropdown-pic">
+                            <div>
+                                <h4 id="dropdown-username">Keertan</h4>
+                                <span id="dropdown-userrole">Worker</span>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-link" onclick="app.navigateTo('profile')">
+                            <i data-lucide="user" class="dropdown-icon"></i> My Profile
+                        </a>
+                        <a href="#" class="dropdown-link" onclick="app.navigateTo('settings')">
+                            <i data-lucide="settings" class="dropdown-icon"></i> Settings
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-link logout-link" onclick="app.handleLogout()">
+                            <i data-lucide="log-out" class="dropdown-icon"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="app-sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active" data-page="dashboard" onclick="app.navigateTo('dashboard')">
+                    <i data-lucide="home" class="sidebar-icon"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="browse" onclick="app.navigateTo('browse')">
+                    <i data-lucide="compass" class="sidebar-icon"></i>
+                    <span>Browse Tasks</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="create-task" onclick="app.navigateTo('create-task')">
+                    <i data-lucide="plus-circle" class="sidebar-icon"></i>
+                    <span>Create Task</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="my-tasks" onclick="app.navigateTo('my-tasks')">
+                    <i data-lucide="folder-kanban" class="sidebar-icon"></i>
+                    <span>My Tasks</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="recommendations" onclick="app.navigateTo('recommendations')">
+                    <i data-lucide="cpu" class="sidebar-icon"></i>
+                    <span>AI Recommendations</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="analytics" onclick="app.navigateTo('analytics')">
+                    <i data-lucide="bar-chart-3" class="sidebar-icon"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="transactions" onclick="app.navigateTo('transactions')">
+                    <i data-lucide="wallet" class="sidebar-icon"></i>
+                    <span>Transactions</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="reviews" onclick="app.navigateTo('reviews')">
+                    <i data-lucide="star" class="sidebar-icon"></i>
+                    <span>Reviews</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="settings" onclick="app.navigateTo('settings')">
+                    <i data-lucide="settings" class="sidebar-icon"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-sidebar-collapse" onclick="app.toggleSidebarCollapse()">
+                    <i data-lucide="chevron-left" id="collapse-icon"></i>
+                    <span>Collapse Menu</span>
+                </button>
+                <div class="sidebar-divider"></div>
+                <a href="#" class="sidebar-link logout-link-sidebar" onclick="app.handleLogout()">
+                    <i data-lucide="log-out" class="sidebar-icon"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-wrapper" id="content-area">
+            
+            <!-- VIEW 1: DASHBOARD -->
+            <section id="view-dashboard" class="app-view fade-in">
+                <div class="view-header">
+                    <div>
+                        <h2>Dashboard Overview</h2>
+                        <p class="subtitle">Welcome back, <span id="dashboard-welcome-name">Keertan</span>. Here is your AI reputation status and tasks performance.</p>
+                    </div>
+                    <div class="balance-badge">
+                        <i data-lucide="wallet" class="balance-icon"></i>
+                        <div>
+                            <span class="balance-lbl">Available Balance</span>
+                            <span class="balance-val" id="dashboard-balance-val">$450.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Cards Header Grid -->
+                <div class="stats-grid">
+                    <div class="glass-card stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-icon-wrapper purple"><i data-lucide="list-todo"></i></span>
+                            <span class="stat-trend trend-up"><i data-lucide="trending-up"></i> +4.5%</span>
+                        </div>
+                        <div class="stat-card-body">
+                            <span class="stat-lbl">Total Active Tasks</span>
+                            <span class="stat-val" id="stat-total-tasks">14</span>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-icon-wrapper green"><i data-lucide="check-square"></i></span>
+                            <span class="stat-trend trend-up"><i data-lucide="trending-up"></i> +12%</span>
+                        </div>
+                        <div class="stat-card-body">
+                            <span class="stat-lbl">Completed Tasks</span>
+                            <span class="stat-val" id="stat-completed-tasks">28</span>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-icon-wrapper gold"><i data-lucide="dollar-sign"></i></span>
+                            <span class="stat-trend trend-up"><i data-lucide="trending-up"></i> +8.2%</span>
+                        </div>
+                        <div class="stat-card-body">
+                            <span class="stat-lbl">Earnings</span>
+                            <span class="stat-val" id="stat-earnings">$680.50</span>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-icon-wrapper blue"><i data-lucide="cpu"></i></span>
+                            <span class="stat-trend trend-up"><i data-lucide="shield-check"></i> Verified</span>
+                        </div>
+                        <div class="stat-card-body">
+                            <span class="stat-lbl">AI Reputation Score</span>
+                            <span class="stat-val" id="stat-rep-score">9.8<span class="stat-max">/10</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Panel Layout: Charts (70%) + AI Insights (30%) -->
+                <div class="dashboard-panels-layout">
+                    <!-- Left Section (70%) -->
+                    <div class="dashboard-left-panel">
+                        <div class="glass-card panel-card">
+                            <div class="panel-header">
+                                <h3>Tasks & Performance Charts</h3>
+                                <div class="chart-actions">
+                                    <button class="btn btn-outline btn-xs active">Weekly</button>
+                                    <button class="btn btn-outline btn-xs" onclick="app.showToast('Monthly analytics loaded', 'info')">Monthly</button>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div id="dashboard-tasks-chart"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-double-grid">
+                            <div class="glass-card panel-card">
+                                <div class="panel-header">
+                                    <h3>Recent Transactions</h3>
+                                    <button class="text-btn" onclick="app.navigateTo('transactions')">View All</button>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="compact-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Task</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="dashboard-transactions-body">
+                                            <!-- Injected by JS -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="glass-card panel-card">
+                                <div class="panel-header">
+                                    <h3>Quick Actions</h3>
+                                </div>
+                                <div class="panel-body quick-actions-body">
+                                    <button class="quick-action-btn" onclick="app.navigateTo('create-task')">
+                                        <i data-lucide="plus-circle"></i>
+                                        <span>Create a Task</span>
+                                    </button>
+                                    <button class="quick-action-btn" onclick="app.navigateTo('browse')">
+                                        <i data-lucide="search"></i>
+                                        <span>Find Microtasks</span>
+                                    </button>
+                                    <button class="quick-action-btn" onclick="app.navigateTo('recommendations')">
+                                        <i data-lucide="sparkles"></i>
+                                        <span>AI Matches</span>
+                                    </button>
+                                    <button class="quick-action-btn" onclick="app.navigateTo('profile')">
+                                        <i data-lucide="user"></i>
+                                        <span>View CV Profile</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Section (30%) -->
+                    <div class="dashboard-right-panel">
+                        <div class="glass-card panel-card ai-insights-card">
+                            <div class="panel-header border-none">
+                                <span class="ai-insight-badge"><i data-lucide="cpu" class="badge-icon-sm"></i> AI Insights Panel</span>
+                            </div>
+                            <div class="panel-body ai-insights-body">
+                                <div class="ai-rep-banner">
+                                    <div class="rep-value-lbl">Performance Score</div>
+                                    <div class="rep-value-container">
+                                        <span class="rep-value">98.4%</span>
+                                        <span class="trend-indicator up"><i data-lucide="arrow-up-right"></i> +0.6%</span>
+                                    </div>
+                                    <p class="rep-text">You ranking is in the top 3% of task solvers this week. Accept a <strong>Translation</strong> task to maximize earnings!</p>
+                                </div>
+
+                                <h4 class="section-title-sm"><i data-lucide="thumbs-up" class="title-icon-sm"></i> Recommended Tasks</h4>
+                                <div class="ai-rec-list" id="dashboard-ai-rec-list">
+                                    <!-- Injected by JS -->
+                                </div>
+
+                                <h4 class="section-title-sm"><i data-lucide="pie-chart" class="title-icon-sm"></i> Suggested Categories</h4>
+                                <div class="ai-categories-container">
+                                    <span class="cat-pill match-high">RLHF Training <span class="cat-match">99% Match</span></span>
+                                    <span class="cat-pill match-high">German Translation <span class="cat-match">95% Match</span></span>
+                                    <span class="cat-pill match-med">Data Labeling <span class="cat-match">82% Match</span></span>
+                                    <span class="cat-pill match-low">Transcription <span class="cat-match">60% Match</span></span>
+                                </div>
+
+                                <h4 class="section-title-sm"><i data-lucide="lightbulb" class="title-icon-sm"></i> AI Tips</h4>
+                                <ul class="ai-tips-list">
+                                    <li>Completing task validation reports can boost your AI reputation score by +0.3.</li>
+                                    <li>Providers offer 20% higher tips for translations submitted 2 hours before the deadline.</li>
+                                    <li>Upload your GitHub profile to unlock coding microtasks with rewards up to $80.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 2: BROWSE TASKS -->
+            <section id="view-browse" class="app-view fade-in hidden">
+                <div class="view-header">
+                    <div>
+                        <h2>Browse Opportunities</h2>
+                        <p class="subtitle">Search, filter, and apply for verified smart contract microtasks.</p>
+                    </div>
+                </div>
+
+                <!-- Filters Header Card -->
+                <div class="glass-card filter-card">
+                    <div class="filter-row">
+                        <div class="filter-item flex-2">
+                            <label>Search Query</label>
+                            <div class="input-wrapper">
+                                <i data-lucide="search" class="input-icon"></i>
+                                <input type="text" id="browse-search-input" placeholder="Search title, details or skills..." oninput="app.filterTasks()">
+                            </div>
+                        </div>
+                        <div class="filter-item">
+                            <label>Category</label>
+                            <div class="input-wrapper select-wrapper">
+                                <select id="browse-filter-category" onchange="app.filterTasks()">
+                                    <option value="all">All Categories</option>
+                                    <option value="AI Training">AI Training & RLHF</option>
+                                    <option value="Data Labeling">Data Labeling</option>
+                                    <option value="Translation">Translation</option>
+                                    <option value="Coding">Coding</option>
+                                    <option value="Design">Logo & Design</option>
+                                    <option value="Writing">Content Writing</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="filter-item">
+                            <label>Max Deadline (Days)</label>
+                            <div class="input-wrapper select-wrapper">
+                                <select id="browse-filter-deadline" onchange="app.filterTasks()">
+                                    <option value="any">Any Time</option>
+                                    <option value="1">Within 24 Hours</option>
+                                    <option value="3">Within 3 Days</option>
+                                    <option value="7">Within 7 Days</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="filter-item">
+                            <label>Status</label>
+                            <div class="input-wrapper select-wrapper">
+                                <select id="browse-filter-status" onchange="app.filterTasks()">
+                                    <option value="all">All Statuses</option>
+                                    <option value="open">Open</option>
+                                    <option value="in_progress">In Progress</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-row-slider">
+                        <div class="slider-wrapper">
+                            <div class="slider-label-container">
+                                <span>Reward Filter: Min Reward</span>
+                                <span class="slider-val" id="reward-slider-val">$0</span>
+                            </div>
+                            <input type="range" id="browse-filter-reward" min="0" max="150" value="0" class="gradient-slider" oninput="app.updateRewardSliderVal(this.value)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid of Task Cards -->
+                <div class="tasks-grid-list" id="browse-tasks-list">
+                    <!-- Task Cards populate here -->
+                </div>
+            </section>
+
+            <!-- VIEW 3: CREATE TASK -->
+            <section id="view-create-task" class="app-view fade-in hidden">
+                <div class="view-header">
+                    <div>
+                        <h2>Create New Microtask</h2>
+                        <p class="subtitle">Deploy a tasks escrow on the platform to hire experts validated by AI models.</p>
+                    </div>
+                </div>
+
+                <div class="form-container-card">
+                    <form id="create-task-form" class="glass-card creation-form" onsubmit="app.handleCreateTask(event)">
+                        <div class="form-group">
+                            <label for="task-title">Task Title</label>
+                            <div class="input-wrapper">
+                                <i data-lucide="edit-3" class="input-icon"></i>
+                                <input type="text" id="task-title" required placeholder="e.g., Label 500 images for self-driving model validation">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="task-desc">Detailed Task Instructions & Requirements</label>
+                            <textarea id="task-desc" required placeholder="Provide clear requirements, expected format, step-by-step instructions, and target output metrics..."></textarea>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="task-category">Category</label>
+                                <div class="input-wrapper select-wrapper">
+                                    <i data-lucide="tag" class="input-icon"></i>
+                                    <select id="task-category" required>
+                                        <option value="AI Training">AI Training & RLHF</option>
+                                        <option value="Data Labeling">Data Labeling</option>
+                                        <option value="Translation">Translation</option>
+                                        <option value="Coding">Coding</option>
+                                        <option value="Design">Logo & Design</option>
+                                        <option value="Writing">Content Writing</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="task-reward">Reward Escrow ($ USD)</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="dollar-sign" class="input-icon"></i>
+                                    <input type="number" id="task-reward" min="1" required placeholder="25">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="task-deadline">Completion Deadline</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="calendar" class="input-icon"></i>
+                                    <input type="date" id="task-deadline" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="task-complexity">Complexity Level</label>
+                                <div class="input-wrapper select-wrapper">
+                                    <i data-lucide="sliders" class="input-icon"></i>
+                                    <select id="task-complexity" required>
+                                        <option value="Low">Low (Simple clicks, short review)</option>
+                                        <option value="Medium" selected>Medium (Specific knowledge required)</option>
+                                        <option value="High">High (Programming, domain expert, deep logic)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Supporting Files / Assets (Optional)</label>
+                            <div class="file-upload-zone" id="file-upload-zone">
+                                <i data-lucide="upload-cloud" class="upload-icon"></i>
+                                <span class="upload-text">Drag & drop files or click to upload CSV, JSON, PNG (Max 15MB)</span>
+                                <input type="file" id="task-file-input" class="hidden-input" onchange="app.handleFileUpload(event)">
+                                <div class="uploaded-file-info hidden" id="uploaded-file-info">
+                                    <i data-lucide="file-check" class="file-icon"></i>
+                                    <span id="uploaded-filename">No file selected</span>
+                                    <button type="button" class="remove-file-btn" onclick="app.removeUploadedFile()"><i data-lucide="x"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions-creation">
+                            <button type="button" class="btn btn-ghost" onclick="app.saveDraftTask()">Save Draft</button>
+                            <button type="submit" class="btn btn-primary">
+                                Publish Task & Escrow <i data-lucide="rocket" class="btn-icon-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- VIEW 4: MY TASKS -->
+            <section id="view-my-tasks" class="app-view fade-in hidden">
+                <div class="view-header">
+                    <div>
+                        <h2>My Tasks Center</h2>
+                        <p class="subtitle">Track tasks you are working on, or check task submittals you published.</p>
+                    </div>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="tabs-navigation-wrapper">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="open" onclick="app.switchMyTasksTab('open')">Open <span class="tab-count" id="count-tab-open">0</span></button>
+                        <button class="tab-btn" data-tab="in-progress" onclick="app.switchMyTasksTab('in-progress')">In Progress <span class="tab-count" id="count-tab-progress">0</span></button>
+                        <button class="tab-btn" data-tab="completed" onclick="app.switchMyTasksTab('completed')">Completed <span class="tab-count" id="count-tab-completed">0</span></button>
+                        <button class="tab-btn" data-tab="cancelled" onclick="app.switchMyTasksTab('cancelled')">Cancelled <span class="tab-count" id="count-tab-cancelled">0</span></button>
+                    </div>
+                </div>
+
+                <!-- Active Tab Grid -->
+                <div class="tasks-grid-list" id="my-tasks-list">
+                    <!-- Loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- VIEW 5: AI RECOMMENDATIONS -->
+            <section id="view-recommendations" class="app-view fade-in hidden">
+                <div class="view-header">
+                    <div>
+                        <h2>AI Recommendation Center</h2>
+                        <p class="subtitle">Our deep learning model matches tasks with your user profile, registered skills, and reputation history.</p>
+                    </div>
+                    <div class="match-badge">
+                        <i data-lucide="cpu" class="match-icon"></i>
+                        <span>Reputation Rank: Top 3%</span>
+                    </div>
+                </div>
+
+                <div class="recommendations-container">
+                    <div class="glass-card recommendation-summary-card">
+                        <div class="rec-summary-layout">
+                            <div class="rec-stat">
+                                <span class="val">98%</span>
+                                <span class="lbl">Highest Match Rate</span>
+                            </div>
+                            <div class="rec-stat">
+                                <span class="val">$45.00</span>
+                                <span class="lbl">Avg. Recommendation Pay</span>
+                            </div>
+                            <div class="rec-stat">
+                                <span class="val">5</span>
+                                <span class="lbl">Matches Available</span>
+                            </div>
+                            <div class="rec-action-desc">
+                                <p>AI recommendations update in real time as your skill profile changes and new jobs arrive. Increase your Reputation Score to unlock premium contracts.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Tasks Recommended For You</h3>
+                    <div class="recommendations-horizontal-scroll" id="ai-recommendations-list">
+                        <!-- Populated by JS with horizontal card scroll -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 6: ANALYTICS -->
+            <section id="view-analytics" class="app-view fade-in hidden">
+                <div class="view-header">
+                    <div>
+                        <h2>Analytics Dashboard</h2>
+                        <p class="subtitle">Evaluate and track your micro-payout streams, task speeds, and efficiency.</p>
+                    </div>
+                </div>
+
+                <div class="analytics-charts-grid">
+                    <div class="glass-card chart-card-lg">
+                        <div class="chart-header">
+                            <h3>Earnings History ($)</h3>
+                            <span class="chart-subtitle">Monthly transaction sum</span>
+                        </div>
+                        <div class="chart-body">
+                            <div id="analytics-earnings-chart"></div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card chart-card-lg">
+                        <div class="chart-header">
+                            <h3>Task Completion Volumes</h3>
+                            <span class="chart-subtitle">Tasks completed weekly</span>
+                        </div>
+                        <div class="chart-body">
+                            <div id="analytics-completion-chart"></div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card chart-card-sm">
+                        <div class="chart-header">
+                            <h3>Earnings by Category</h3>
+                            <span class="chart-subtitle">Category distribution ratio</span>
+                        </div>
+                        <div class="chart-body flex-center">
+                            <div id="analytics-category-chart"></div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card chart-card-sm">
+                        <div class="chart-header">
+                            <h3>Productivity Metrics</h3>
+                            <span class="chart-subtitle">Avg. completion speed vs reputation</span>
+                        </div>
+                        <div class="chart-body">
+                            <div id="analytics-productivity-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 7: TRANSACTIONS -->
+            <section id="view-transactions" class="app-view fade-in hidden">
+                <div class="view-header">
+                    <div>
+                        <h2>Transaction History</h2>
+                        <p class="subtitle">Complete ledger of platform rewards, draft escrows, and payouts.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card table-card">
+                    <div class="table-actions">
+                        <div class="input-wrapper search-sm">
+                            <i data-lucide="search" class="input-icon"></i>
+                            <input type="text" id="transaction-search" placeholder="Search by transaction ID..." oninput="app.filterTransactions()">
+                        </div>
+                        <button class="btn btn-outline btn-sm" onclick="app.exportTransactions()">
+                            <i data-lucide="download" class="btn-icon-left"></i> Export Ledger
+                        </button>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <th>Task Title</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactions-table-body">
+                                <!-- Injected dynamically by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 8: REVIEWS -->
+            <section id="view-reviews" class="app-view fade-in hidden">
+                <div class="view-header">
+                    <div>
+                        <h2>Reputation & Feedback</h2>
+                        <p class="subtitle">Read reviews left by Task Providers and Workers.</p>
+                    </div>
+                </div>
+
+                <div class="reviews-layout">
+                    <div class="glass-card reviews-summary-card">
+                        <div class="rev-summary-title">Platform Evaluation</div>
+                        <div class="rev-big-rating">4.9</div>
+                        <div class="rev-stars">⭐⭐⭐⭐⭐</div>
+                        <div class="rev-count">Based on 14 recommendations</div>
+                        
+                        <div class="rev-rating-breakdown">
+                            <div class="breakdown-row">
+                                <span class="breakdown-lbl">5 Stars</span>
+                                <div class="breakdown-bar"><div class="fill" style="width: 90%;"></div></div>
+                                <span class="breakdown-percent">90%</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span class="breakdown-lbl">4 Stars</span>
+                                <div class="breakdown-bar"><div class="fill" style="width: 10%;"></div></div>
+                                <span class="breakdown-percent">10%</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span class="breakdown-lbl">3 Stars</span>
+                                <div class="breakdown-bar"><div class="fill" style="width: 0%;"></div></div>
+                                <span class="breakdown-percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reviews-list-container" id="reviews-list-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 9: SETTINGS -->
+            <section id="view-settings" class="app-view fade-in hidden">
+                <div class="view-header">
+                    <div>
+                        <h2>System Settings</h2>
+                        <p class="subtitle">Manage credentials, notifications parameters, themes, and private profile metrics.</p>
+                    </div>
+                </div>
+
+                <div class="settings-layout">
+                    <!-- Settings Sidebar/Tabs -->
+                    <div class="glass-card settings-nav-card">
+                        <button class="settings-nav-btn active" data-settings-tab="account" onclick="app.switchSettingsTab('account')">
+                            <i data-lucide="user"></i> Account Settings
+                        </button>
+                        <button class="settings-nav-btn" data-settings-tab="password" onclick="app.switchSettingsTab('password')">
+                            <i data-lucide="lock"></i> Password & Security
+                        </button>
+                        <button class="settings-nav-btn" data-settings-tab="notifications" onclick="app.switchSettingsTab('notifications')">
+                            <i data-lucide="bell"></i> Notification Settings
+                        </button>
+                        <button class="settings-nav-btn" data-settings-tab="theme" onclick="app.switchSettingsTab('theme')">
+                            <i data-lucide="palette"></i> Themes & Styling
+                        </button>
+                        <button class="settings-nav-btn" data-settings-tab="privacy" onclick="app.switchSettingsTab('privacy')">
+                            <i data-lucide="shield"></i> Privacy & Escrow
+                        </button>
+                    </div>
+
+                    <!-- Settings Content Cards -->
+                    <div class="settings-content-container">
+                        <!-- Tab: Account -->
+                        <div id="settings-tab-account" class="glass-card settings-card tab-content">
+                            <h3>Account Information</h3>
+                            <p class="settings-sec-desc">Update your general contact coordinates and matching parameters.</p>
+                            <form onsubmit="app.handleSettingsSave(event, 'Account info updated successfully!')">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>User Handle</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="user" class="input-icon"></i>
+                                            <input type="text" id="settings-username" value="Keertan">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Contact Email</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="mail" class="input-icon"></i>
+                                            <input type="email" id="settings-email" value="keertan@tasksphere.ai">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Bio / Resume Summary</label>
+                                    <textarea placeholder="e.g., Computer science graduate specializing in neural net fine-tuning and multilingual translation.">Decentralized worker. I specialize in RLHF chatbot alignment, Spanish-English translations, and data verification projects.</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+
+                        <!-- Tab: Password -->
+                        <div id="settings-tab-password" class="glass-card settings-card tab-content hidden">
+                            <h3>Security Credentials</h3>
+                            <p class="settings-sec-desc">Keep your secure platform credentials up-to-date.</p>
+                            <form onsubmit="app.handleSettingsSave(event, 'Password updated successfully!')">
+                                <div class="form-group">
+                                    <label>Current Password</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="lock" class="input-icon"></i>
+                                        <input type="password" placeholder="••••••••">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="lock" class="input-icon"></i>
+                                        <input type="password" placeholder="••••••••">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm New Password</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="lock" class="input-icon"></i>
+                                        <input type="password" placeholder="••••••••">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Change Password</button>
+                            </form>
+                        </div>
+
+                        <!-- Tab: Notifications -->
+                        <div id="settings-tab-notifications" class="glass-card settings-card tab-content hidden">
+                            <h3>Notification Triggers</h3>
+                            <p class="settings-sec-desc">Choose what channels and events trigger notifications.</p>
+                            <form onsubmit="app.handleSettingsSave(event, 'Notification preferences saved!')">
+                                <div class="settings-checkbox-list">
+                                    <label class="settings-checkbox-item">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        <div>
+                                            <span class="title">AI Match Recommendations</span>
+                                            <span class="desc">Notify me when a new task has >90% match score</span>
+                                        </div>
+                                    </label>
+                                    <label class="settings-checkbox-item">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        <div>
+                                            <span class="title">Platform Payouts</span>
+                                            <span class="desc">Send notification when reward escrow is released to balance</span>
+                                        </div>
+                                    </label>
+                                    <label class="settings-checkbox-item">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                        <div>
+                                            <span class="title">Chat & Direct Messages</span>
+                                            <span class="desc">Notify when task providers/workers message me</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Preferences</button>
+                            </form>
+                        </div>
+
+                        <!-- Tab: Theme -->
+                        <div id="settings-tab-theme" class="glass-card settings-card tab-content hidden">
+                            <h3>Theme Settings</h3>
+                            <p class="settings-sec-desc">Customize UI theme and ambient animation parameters.</p>
+                            <form onsubmit="app.handleSettingsSave(event, 'Theme settings applied!')">
+                                <div class="theme-selection-grid">
+                                    <div class="theme-option active" id="theme-purple" onclick="app.setThemePreset('purple')">
+                                        <div class="preview purple"></div>
+                                        <span>Deep Purple (Default)</span>
+                                    </div>
+                                    <div class="theme-option" id="theme-emerald" onclick="app.setThemePreset('emerald')">
+                                        <div class="preview emerald"></div>
+                                        <span>Emerald Neon</span>
+                                    </div>
+                                    <div class="theme-option" id="theme-sunset" onclick="app.setThemePreset('sunset')">
+                                        <div class="preview sunset"></div>
+                                        <span>Sunset Gold</span>
+                                    </div>
+                                </div>
+                                <div class="settings-checkbox-list margin-top-lg">
+                                    <label class="settings-checkbox-item">
+                                        <input type="checkbox" id="ambient-anim-toggle" checked onchange="app.toggleAmbientAnimations(this.checked)">
+                                        <span class="checkmark"></span>
+                                        <div>
+                                            <span class="title">Ambient Background Glows</span>
+                                            <span class="desc">Enable smooth floating color blur blobs (disable for better performance on slow devices)</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Apply Visuals</button>
+                            </form>
+                        </div>
+
+                        <!-- Tab: Privacy -->
+                        <div id="settings-tab-privacy" class="glass-card settings-card tab-content hidden">
+                            <h3>Privacy & Platform Security</h3>
+                            <p class="settings-sec-desc">Manage public index properties and wallet security credentials.</p>
+                            <form onsubmit="app.handleSettingsSave(event, 'Privacy preferences updated!')">
+                                <div class="settings-checkbox-list">
+                                    <label class="settings-checkbox-item">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        <div>
+                                            <span class="title">Public Leaderboard Listing</span>
+                                            <span class="desc">Show my reputation rank and completion stats on public indexes</span>
+                                        </div>
+                                    </label>
+                                    <label class="settings-checkbox-item">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        <div>
+                                            <span class="title">AI Engine Skill Scanning</span>
+                                            <span class="desc">Allow TaskSphere models to scan completed work items to suggest new skills</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Privacy Options</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 10: NOTIFICATIONS PAGE -->
+            <section id="view-notifications" class="app-view fade-in hidden">
+                <div class="view-header">
+                    <div>
+                        <h2>Notifications Panel</h2>
+                        <p class="subtitle">Complete chronological history of notification alerts.</p>
+                    </div>
+                    <button class="btn btn-outline btn-sm" onclick="app.markAllNotificationsRead()">
+                        <i data-lucide="check-check" class="btn-icon-left"></i> Mark all read
+                    </button>
+                </div>
+
+                <div class="notifications-page-list" id="notifications-page-list">
+                    <!-- Dynamic notification items populated by JS -->
+                </div>
+            </section>
+
+            <!-- VIEW 11: USER PROFILE -->
+            <section id="view-profile" class="app-view fade-in hidden">
+                <div class="view-header">
+                    <div>
+                        <h2>User Profile</h2>
+                        <p class="subtitle">Overview of skills, verified credentials, and rating breakdowns.</p>
+                    </div>
+                </div>
+
+                <div class="profile-layout-grid">
+                    <!-- Left: Profile card -->
+                    <div class="glass-card profile-details-card">
+                        <div class="profile-card-header">
+                            <div class="avatar-upload-container">
+                                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=keert" alt="Avatar" class="profile-big-avatar" id="profile-display-pic">
+                                <button class="btn-edit-avatar" onclick="app.showToast('Upload feature mock activated!', 'info')"><i data-lucide="camera"></i></button>
+                            </div>
+                            <h3 id="profile-display-name">Keertan</h3>
+                            <span class="role-badge" id="profile-display-role">Worker</span>
+                            <p class="profile-bio" id="profile-display-bio">Decentralized worker. I specialize in RLHF chatbot alignment, Spanish-English translations, and data verification projects.</p>
+                        </div>
+                        
+                        <div class="profile-skills-section">
+                            <h4>Skills & Core Competencies</h4>
+                            <div class="profile-skills-list" id="profile-skills-list">
+                                <!-- Injected by JS -->
+                            </div>
+                        </div>
+
+                        <div class="profile-cv-details">
+                            <div class="cv-item">
+                                <span class="cv-lbl">Experience Level</span>
+                                <span class="cv-val" id="profile-display-exp">Intermediate</span>
+                            </div>
+                            <div class="cv-item">
+                                <span class="cv-lbl">Registration Date</span>
+                                <span class="cv-val">June 2026</span>
+                            </div>
+                            <div class="cv-item">
+                                <span class="cv-lbl">Wallet Escrow Address</span>
+                                <span class="cv-val font-mono">0x7c...24ed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Profile Info Form + stats -->
+                    <div class="profile-main-section">
+                        <div class="glass-card profile-info-card">
+                            <h3>Edit Profile Coordinates</h3>
+                            <form onsubmit="app.handleProfileSave(event)">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="profile-name-input">Display Name</label>
+                                        <input type="text" id="profile-name-input" value="Keertan" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="profile-role-input">User Role</label>
+                                        <select id="profile-role-input">
+                                            <option value="worker" selected>Worker</option>
+                                            <option value="provider">Provider</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-bio-input">Biography Summary</label>
+                                    <textarea id="profile-bio-input" rows="4">Decentralized worker. I specialize in RLHF chatbot alignment, Spanish-English translations, and data verification projects.</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Profile Coordinates</button>
+                            </form>
+                        </div>
+
+                        <div class="profile-stats-grid margin-top-lg">
+                            <div class="glass-card profile-stat-mini-card">
+                                <div class="stat-icon purple"><i data-lucide="check-circle-2"></i></div>
+                                <div class="stat-info">
+                                    <span class="val" id="profile-stat-completed">28</span>
+                                    <span class="lbl">Tasks Finished</span>
+                                </div>
+                            </div>
+                            <div class="glass-card profile-stat-mini-card">
+                                <div class="stat-icon green"><i data-lucide="wallet"></i></div>
+                                <div class="stat-info">
+                                    <span class="val" id="profile-stat-earnings">$680.50</span>
+                                    <span class="lbl">Total Earnings</span>
+                                </div>
+                            </div>
+                            <div class="glass-card profile-stat-mini-card">
+                                <div class="stat-icon gold"><i data-lucide="star"></i></div>
+                                <div class="stat-info">
+                                    <span class="val">4.9</span>
+                                    <span class="lbl">Platform Rating</span>
+                                </div>
+                            </div>
+                            <div class="glass-card profile-stat-mini-card">
+                                <div class="stat-icon blue"><i data-lucide="cpu"></i></div>
+                                <div class="stat-info">
+                                    <span class="val" id="profile-stat-reputation">9.8</span>
+                                    <span class="lbl">Reputation Score</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- APP FOOTER -->
+            <footer class="app-footer">
+                <div class="footer-links">
+                    <a href="#" onclick="app.showToast('Decentralized task sharing network.', 'info')">About Us</a>
+                    <a href="#" onclick="app.showToast('Support: support@tasksphere.ai', 'info')">Contact</a>
+                    <a href="#" onclick="app.showToast('User Agreement Terms', 'info')">Terms of Service</a>
+                    <a href="#" onclick="app.showToast('Privacy Shield Policies', 'info')">Privacy Policy</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="#" onclick="app.showToast('Connecting on Twitter...', 'info')"><i data-lucide="twitter"></i></a>
+                    <a href="#" onclick="app.showToast('Check our GitHub code...', 'info')"><i data-lucide="github"></i></a>
+                    <a href="#" onclick="app.showToast('Join our Discord server...', 'info')"><i data-lucide="message-circle"></i></a>
+                </div>
+                <p class="footer-copyright">&copy; 2026 TaskSphere AI. All platform actions secured via cryptographic matching.</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- MODALS & OVERLAYS -->
+    
+    <!-- Modal: Task Details View -->
+    <div id="task-details-modal" class="modal-overlay hidden" onclick="app.closeTaskDetailsModal()">
+        <div class="modal-content glass-card" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="app.closeTaskDetailsModal()"><i data-lucide="x"></i></button>
+            
+            <div class="modal-layout">
+                <!-- Left: Task Info -->
+                <div class="modal-left">
+                    <div class="modal-task-badge-row">
+                        <span class="cat-badge" id="modal-task-category">AI Training</span>
+                        <span class="complexity-badge" id="modal-task-complexity">Medium Complexity</span>
+                    </div>
+                    <h2 id="modal-task-title">Label 500 images for autonomous vehicle validation</h2>
+                    <p class="modal-sec-title">Task Instructions</p>
+                    <p class="modal-task-desc" id="modal-task-desc">
+                        Provide a brief description of the problem, any background context, and what the change accomplishes.
+                    </p>
+                    
+                    <div class="modal-attachments-section hidden" id="modal-attachments-section">
+                        <p class="modal-sec-title">Attachment Reference</p>
+                        <div class="modal-attachment-card">
+                            <i data-lucide="file-text" class="file-icon"></i>
+                            <div>
+                                <span class="attachment-name" id="modal-attachment-name">instruction_assets.json</span>
+                                <span class="attachment-size">142 KB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-progress-section hidden" id="modal-progress-section">
+                        <p class="modal-sec-title">Progress Tracker</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="modal-progress-bar" style="width: 45%;"></div>
+                        </div>
+                        <div class="progress-meta">
+                            <span id="modal-progress-text">In Progress (45% Complete)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Provider card -->
+                <div class="modal-right">
+                    <div class="glass-card modal-provider-card">
+                        <h3>Task Provider</h3>
+                        <div class="provider-info">
+                            <div class="provider-avatar">🏢</div>
+                            <div>
+                                <h4 id="modal-provider-name">Autonomous Lab Corp</h4>
+                                <span class="provider-rating">⭐⭐⭐⭐⭐ (4.9 Rating)</span>
+                            </div>
+                        </div>
+                        <div class="provider-stats">
+                            <div class="p-stat">
+                                <span class="lbl">Tasks Published</span>
+                                <span class="val">142</span>
+                            </div>
+                            <div class="p-stat">
+                                <span class="lbl">Completion Rate</span>
+                                <span class="val">100%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-task-metrics">
+                        <div class="metric-row">
+                            <span class="lbl">Reward Amount</span>
+                            <span class="val reward-val" id="modal-task-reward">$45.00</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="lbl">Deadline Date</span>
+                            <span class="val" id="modal-task-deadline">June 30, 2026</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="lbl">Est. Completion</span>
+                            <span class="val" id="modal-task-est-time">1h 15m</span>
+                        </div>
+                        <div class="metric-row" id="modal-match-row">
+                            <span class="lbl">AI Match Score</span>
+                            <span class="val match-val" id="modal-task-match">98% Match</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-actions" id="modal-actions-container">
+                        <!-- Buttons injected dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script loading core application logic -->
+    <script src="app.js"></script>
+</body>
+</html>
