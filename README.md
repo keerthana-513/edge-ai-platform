@@ -143,7 +143,7 @@ peer-to-peer-microtasking-platform/
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/peer-to-peer-microtasking-platform.git
+git clone https://github.com/keerthana-513/peer-to-peer-microtasking-platform.git
 cd peer-to-peer-microtasking-platform
 ```
 
