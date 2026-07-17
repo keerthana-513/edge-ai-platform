@@ -2,6 +2,7 @@
 
 An intelligent full-stack web application that enables users to post and complete microtasks while leveraging Artificial Intelligence for task recommendations, worker matching, fraud detection, and performance analytics.
 
+# DIRECT LINK : https://keerthana-513.github.io/edge-ai-platform/ 
 ## 🚀 Features
 
 ### 🔐 Authentication & Authorization
@@ -270,7 +271,7 @@ Predicts estimated completion time using machine learning models.
 
 ## 👨‍💻 Author
 
-**Vishnu M S**
+**KEERTHANA S**
 
 * B.Tech Artificial Intelligence and Data Science Student
 * Passionate about Full Stack Development and Artificial Intelligence.
